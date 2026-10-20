@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Fångster{% endblock %}
+{% block content %}
+<h2>Arkiverade fångster</h2>
+<p>Totalt {{ n }} fångster, {{ mb|round(1) }} MB på disk. Visar de 100 senaste.</p>
+{% if not snaps %}
+<p><b>Inga fångster ännu.</b> Kör <code>python cli.py archive</code>.</p>
+{% else %}
+<table class="lista">
+  <tr><th>Tid (UTC)</th><th>Källa</th><th>Sida</th><th>Poster</th><th>Storlek</th><th>WARC</th></tr>
+  {% for s in snaps %}
+  <tr class="{{ 'udda' if loop.index is odd }}">
+    <td>{{ s.taken_at[:16].replace('T', ' ') }}</td>
+    <td>{{ s.source }}</td>
+    <td>{% if s.article_id %}<a href="/artikel/{{ s.article_id }}">{{ s.title or s.url }}</a>{% else %}<a href="{{ s.url }}">Startsidan</a>{% endif %}</td>
+    <td>{{ s.n_records }} ({{ s.n_revisits }} dubbl.)</td>
+    <td>{{ (s.bytes / 1024 / 1024)|round(2) }} MB</td>
+    <td><a href="{{ s.warc_url }}">fil</a> | <a href="{{ s.replay_url }}">pywb</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

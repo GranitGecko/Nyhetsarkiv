@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}{{ e.name }}{% endblock %}
+{% block content %}
+<h2>{{ e.name }}</h2>
+<p class="liten">{{ e.type }} | <a href="{{ e.home }}">{{ e.home }}</a> |
+  {% if e.in_archive %}{{ e.stats.get('articles', 0) }} artiklar i arkivet{% else %}ännu inte tillagd i arkivet{% endif %}</p>
+
+{% if p %}
+  {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+  {% if p.verify %}<p class="varning"><b>Obs:</b> {{ p.verify }}</p>{% endif %}
+
+  <h3>Fakta</h3>
+  <table class="meta">
+    {% for k, v in p.facts.items() %}<tr><td><b>{{ k }}:</b></td><td>{{ v }}</td></tr>{% endfor %}
+    {% if e.political_label %}<tr><td><b>Politisk etikett (sajtens egen uppgift):</b></td><td>{{ e.political_label }}</td></tr>{% endif %}
+    {% if e.in_archive %}
+    <tr><td><b>I arkivet:</b></td><td>{{ e.stats.get('articles', 0) }} artiklar{% if e.stats.get('first') %}, publicerade {{ e.stats.first[:10] }} till {{ e.stats.last[:10] }}{% endif %};
+      {{ e.stats.get('snapshots', 0) }} webbarkiverade sidor{% if not e.web_archive %} (webbarkivering avstängd för den här källan){% endif %}</td></tr>
+    {% endif %}
+  </table>
+
+  <h3>Nyckelpersoner</h3>
+  {% if p.people %}
+  <table class="lista">
+    <tr><th>Namn</th><th>Roll och uppgiftens ålder</th><th>Källa</th></tr>
+    {% for person in p.people %}
+    <tr class="{{ 'udda' if loop.index is odd }}"><td>{{ person.name }}</td><td>{{ person.role }}</td><td><a href="{{ person.source }}">länk</a></td></tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="liten">Inga nyckelpersoner är dokumenterade här ännu.</p>
+  {% endif %}
+
+  {% if p.described %}
+  <h3>Så beskrivs källan</h3>
+  <ul>
+    {% for d in p.described %}<li>{{ d.text }} [<a href="{{ d.source }}">källa</a>]</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if p.sources %}
+  <h3>Källor för uppgifterna</h3>
+  <ul>{% for url in p.sources %}<li><a href="{{ url }}">{{ url }}</a></li>{% endfor %}</ul>
+  {% endif %}
+  <p class="liten">Sammanställt från offentliga källor{% if checked %}, senast genomgånget {{ checked }}{% endif %}. Uppgifter om personer avser deras
+  offentliga roller och kan vara inaktuella. Hittar du ett fel: rätta det i <code>content/profiles.json</code> (eller <code>data/profiles.json</code>) med en källa.</p>
+{% else %}
+  <p><b>Ingen profil ännu.</b> Lägg till ägare, nyckelpersoner och källor för {{ e.name }} i <code>data/profiles.json</code>
+  (se <code>content/profiles.json</code> för formatet).</p>
+{% endif %}
+
+{% if e.in_archive %}
+  <h3>Senaste artiklarna</h3>
+  {% if recent %}
+  <table class="lista">
+    <tr><th>Datum</th><th>Typ</th><th>Rubrik</th></tr>
+    {% for a in recent %}
+    <tr class="{{ 'udda' if loop.index is odd }}"><td>{{ (a.published or '')[:16].replace('T', ' ') }}</td><td>{{ a.article_type or '' }}</td>
+      <td><a href="/artikel/{{ a.id }}">{{ a.title or a.url }}</a></td></tr>
+    {% endfor %}
+  </table>
+  <p><a href="/artiklar?kalla={{ e.key }}">&raquo; Alla artiklar från {{ e.name }}</a></p>
+  {% else %}<p class="liten">Inga tolkade artiklar ännu.</p>{% endif %}
+{% endif %}
+<p><a href="/kallor">&laquo; Alla källor</a> | <a href="/">Start</a></p>
+{% endblock %}

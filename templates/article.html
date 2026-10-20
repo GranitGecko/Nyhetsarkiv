@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ a.title }}{% endblock %}
+{% block content %}
+<h2>{{ a.title }}</h2>
+<p><i>{{ a.ingress or '' }}</i></p>
+<table class="meta">
+  <tr><td><b>Källa:</b></td><td><a href="/kalla/{{ a.source }}">{{ a.source_name }}</a>{% if a.source_political_label %} ({{ a.source_political_label }}){% endif %}</td></tr>
+  <tr><td><b>Författare:</b></td><td>{{ a.author or '-' }}</td></tr>
+  <tr><td><b>Publicerad:</b></td><td>{{ a.published or '-' }}</td></tr>
+  <tr><td><b>Uppdaterad:</b></td><td>{{ a.updated or '-' }}</td></tr>
+  <tr><td><b>Kategori / ämne:</b></td><td>{{ a.category or '-' }} / {{ a.topic or '-' }}</td></tr>
+  <tr><td><b>Typ:</b></td><td>{{ a.article_type or '-' }}{% if a.paywalled %} (betalvägg){% endif %}</td></tr>
+  <tr><td><b>Plats:</b></td><td>{{ a.city or '-' }}, {{ a.country or '-' }}</td></tr>
+  <tr><td><b>Taggar:</b></td><td>{{ (a.tags or [])|join(', ') or '-' }}</td></tr>
+  <tr><td><b>Original:</b></td><td><a href="{{ a.url }}">{{ a.url }}</a></td></tr>
+</table>
+<hr>
+{% for p in a.paragraphs %}<p>{{ p }}</p>{% endfor %}
+<h2 style="font-size:16px">Arkiverade fångster</h2>
+{% if snaps %}
+<table class="lista">
+  <tr><th>Tidpunkt (UTC)</th><th>Poster</th><th>Storlek</th><th>WARC-fil</th><th>Spela upp</th></tr>
+  {% for s in snaps %}
+  <tr>
+    <td>{{ s.taken_at[:16].replace('T', ' ') }}</td>
+    <td>{{ s.n_records }} ({{ s.n_revisits }} dubbletter)</td>
+    <td>{{ (s.bytes / 1024 / 1024)|round(2) }} MB</td>
+    <td><a href="{{ s.warc_url }}">{{ s.warc_path }}</a></td>
+    <td><a href="{{ s.replay_url }}">pywb</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p class="liten">Ingen fångst ännu. Kör <code>python cli.py archive</code>.</p>
+{% endif %}
+<p><a href="/artiklar">&laquo; Alla artiklar</a> | <a href="/api/articles/{{ a.id }}">Visa som JSON</a></p>
+{% endblock %}

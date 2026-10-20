@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Start{% endblock %}
+{% block content %}
+<h2>Välkommen till Nyhetsarkivet</h2>
+<p>
+Nyhetsarkivet samlar in, tolkar och webbarkiverar svenska nyhetssajter. Syftet är att <b>bevara och göra sökbart</b> det som
+publiceras, eftersom artiklar ofta ändras i efterhand, flyttas bakom betalväggar eller försvinner helt. För varje artikel sparas
+dels strukturerade uppgifter (rubrik, författare, tid, kategori, plats), dels en fullständig webbarkivering med sidans
+bilder, formgivning och skript, så att sidan går att se som den såg ut.
+</p>
+<p>
+Arkivet har medvetet ett <b>brett urval</b>: public service, rikstäckande och lokala dagstidningar, nätmedier och
+opinionssajter över hela det politiska spektrumet samt organisations- och partinära medier. <b>Att en källa finns med betyder
+inte att vi står bakom innehållet eller bedömer det som tillförlitligt.</b> Det betyder att den är en del av det svenska
+medielandskapet och därför intressant att dokumentera. Varje källa har en egen sida som beskriver vem som ligger bakom, med
+länkar till källorna för uppgifterna.
+</p>
+
+<table class="meta">
+  <tr><td><b>Artiklar i arkivet:</b></td><td>{{ total }}</td></tr>
+  <tr><td><b>Källor:</b></td><td>{{ n_sources }} ({{ n_with_articles }} med artiklar hittills)</td></tr>
+  <tr><td><b>Webbarkiverade sidor:</b></td><td>{{ n_snapshots }} ({{ warc_mb|round(1) }} MB)</td></tr>
+  <tr><td><b>Senaste artikel:</b></td><td>{{ (latest or '-')[:16].replace('T', ' ') }}</td></tr>
+</table>
+<p><a href="/artiklar"><b>&raquo; Bläddra och sök bland artiklarna</b></a> | <a href="/kallor">Alla källor i en tabell</a> | <a href="/docs">API</a></p>
+
+<h3>Källor</h3>
+{% for type, entries in groups %}
+  <p><b>{{ type }}</b></p>
+  <ul class="kallor">
+  {% for e in entries %}
+    <li><a href="/kalla/{{ e.key }}">{{ e.name }}</a>
+      {% if e.in_archive %}<span class="liten">({{ e.stats.get('articles', 0) }} artiklar)</span>{% else %}<span class="liten">(ännu inte tillagd i arkivet)</span>{% endif %}</li>
+  {% endfor %}
+  </ul>
+{% endfor %}
+
+<p class="liten">Uppgifterna om ägare och nyckelpersoner är sammanställda från offentliga källor och kan innehålla fel eller vara
+inaktuella{% if checked %} (senast genomgångna {{ checked }}){% endif %}. Se varje källas sida för länkarna.</p>
+{% endblock %}

@@ -1,0 +1,801 @@
+{
+  "checked": "2026-10-12",
+  "profiles": {
+    "100procent": {
+      "name": "100%",
+      "home": "https://www.100.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Mediebolag som producerar nyheter, analyser och opinion i text, poddar och rörlig bild. Beskriver sig själv som ett alternativ till public service med ett marknadsliberalt, frihetligt och konservativt perspektiv, och säger uttryckligen att de inte låtsas vara opartiska.",
+      "facts": {
+        "Bolag": "100 Procent Sverige AB (org.nr 559464-3297), Stockholm",
+        "Finansiering": "Frivilliga medlemskap och annonser enligt egen uppgift; allt innehåll utan betalvägg",
+        "Ansvarig utgivare": "Marie Söderqvist",
+        "Politisk riktning": "Beskriver sig själv som marknadsliberal, frihetlig och konservativ och säger att man inte låtsas vara opartisk"
+      },
+      "people": [
+        {
+          "name": "Marie Söderqvist",
+          "role": "VD, delägare och ansvarig utgivare",
+          "source": "https://www.100.se/om-oss"
+        },
+        {
+          "name": "Henrik Jönsson",
+          "role": "Chefredaktör, delägare och programledare",
+          "source": "https://www.100.se/om-oss"
+        },
+        {
+          "name": "Per Gudmundson",
+          "role": "Redaktionschef",
+          "source": "https://www.100.se/om-oss"
+        },
+        {
+          "name": "Albert L. Barnéus",
+          "role": "COO",
+          "source": "https://www.100.se/om-oss"
+        }
+      ],
+      "described": [
+        {
+          "text": "Egen beskrivning: oberoende mediebolag med marknadsliberalt, frihetligt och konservativt perspektiv",
+          "source": "https://www.100.se/om-oss"
+        }
+      ],
+      "sources": [
+        "https://www.100.se/om-oss",
+        "https://www.100.se/artiklar/debatt"
+      ]
+    },
+    "aftonbladet": {
+      "name": "Aftonbladet",
+      "home": "https://www.aftonbladet.se/",
+      "type": "Rikstäckande dagspress",
+      "summary": "Rikstäckande kvällstidning med stor nätverksamhet.",
+      "facts": {
+        "Ägare": "Schibsted (uppgiften är allmänt känd men har inte källkontrollerats i den här versionen)",
+        "Politisk etikett": "Oberoende socialdemokratisk (egen beteckning)"
+      },
+      "people": [
+        {
+          "name": "Martin Schori",
+          "role": "Ansvarig utgivare (2024)",
+          "source": "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+        }
+      ],
+      "described": [],
+      "sources": [
+        "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+      ],
+      "verify": "Ägaruppgiften saknar källa här; kontrollera mot aktuell källa."
+    },
+    "arbetaren": {
+      "name": "Arbetaren",
+      "home": "https://www.arbetaren.se/",
+      "type": "Organisationsmedia",
+      "summary": "Syndikalistisk veckotidning som knyts till fackförbundet SAC.",
+      "facts": {
+        "Knytning": "Syndikalistisk veckotidning knuten till SAC (Sveriges Arbetares Centralorganisation), enligt Wikipedia"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Wikipedia (lista över socialistiska tidningar i Sverige): SAC:s veckotidning",
+          "source": "https://en.wikipedia.org/wiki/List_of_socialist_newspapers_in_Sweden"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_socialist_newspapers_in_Sweden"
+      ],
+      "verify": "Ägande, chefredaktör och ansvarig utgivare behöver fyllas i."
+    },
+    "detgodasamhallet": {
+      "name": "Det Goda Samhället",
+      "home": "https://detgodasamhallet.com/",
+      "type": "Nätmedia och opinion",
+      "summary": "",
+      "facts": {},
+      "people": [],
+      "described": [],
+      "sources": [],
+      "verify": "Ingen verifierad information hittades i den här körningen. Fyll i ägare, ansvarig utgivare och nyckelpersoner från sajtens om-oss-sida eller utgivningsbeviset."
+    },
+    "di": {
+      "name": "Dagens industri",
+      "home": "https://www.di.se/",
+      "type": "Rikstäckande dagspress",
+      "summary": "Näringslivs- och finanstidning, en av kärnorna i Bonnier News.",
+      "facts": {
+        "Ägare": "Bonnier News (helägt av Bonnier Group)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+        }
+      ],
+      "sources": [
+        "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+      ]
+    },
+    "dn": {
+      "name": "Dagens Nyheter",
+      "home": "https://www.dn.se/",
+      "type": "Rikstäckande dagspress",
+      "summary": "Sveriges största morgontidning, grundad 1864. Ägs av Bonnier och beskriver sig som oberoende liberal.",
+      "facts": {
+        "Ägare": "Bonnier (ägt av Bonnierkoncernen sedan 1909, enligt Wikipedia)",
+        "Grundad": "1864 av Rudolf Wall",
+        "Politisk etikett": "Oberoende liberal (egen beteckning)"
+      },
+      "people": [
+        {
+          "name": "Peter Wolodarski",
+          "role": "Chefredaktör (enligt Wikipedia; kontrollera aktuell uppgift)",
+          "source": "https://en.wikipedia.com/wiki/DN.se"
+        }
+      ],
+      "described": [
+        {
+          "text": "Wikipedia: grundad 1864 av Rudolf Wall; ägd av Bonnier sedan 1909; politisk inriktning oberoende liberal",
+          "source": "https://en.wikipedia.com/wiki/DN.se"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.com/wiki/DN.se"
+      ],
+      "verify": "Aktuell chefredaktör bör kontrolleras mot DN:s egen sida."
+    },
+    "dt": {
+      "name": "Dalarnas Tidningar",
+      "home": "https://www.dt.se/",
+      "type": "Regional och lokal press",
+      "summary": "Regional dagstidning som var en del av Mittmedia, som Bonnier News köpte 2019.",
+      "facts": {
+        "Ägare": "Bonnier News (via förvärvet av Mittmedia 2019)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+        }
+      ],
+      "sources": [
+        "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/",
+        "https://www.svt.se/kultur/bonnier-koper-mittmedia",
+        "https://www.sverigesradio.se/artikel/6163849"
+      ]
+    },
+    "epochtimes": {
+      "name": "Epoch Times (Sverige)",
+      "home": "https://www.epochtimes.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Svensk utgåva av den internationella tidningen The Epoch Times. Tidningens koppling till Falun Gong är omstridd: Wikipedia refererar att AP 2006 kallade det 'tekniskt felaktigt' att säga att Falun Gong äger tidningen, medan många av medarbetarna är utövare, och att tidningens ordförande i den engelska utgåvan förnekar en direkt koppling.",
+      "facts": {
+        "Moderorganisation": "Epoch Media Group; tidningen grundades år 2000 av John Tang och andra (enligt Wikipedia)",
+        "Svenska utgåvan": "Uppgifter om svensk utgivare och ansvarig utgivare har inte verifierats här"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Wikipedia: grundad 2000 av John Tang och andra; förhållandet till Falun Gong är omtvistat",
+          "source": "https://en.wikipedia.org/wiki/The_Epoch_Times"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/The_Epoch_Times"
+      ],
+      "verify": "Svensk utgivare, ansvarig utgivare och redaktion behöver fyllas i; informationen här gäller moderorganisationen."
+    },
+    "expressen": {
+      "name": "Expressen",
+      "home": "https://www.expressen.se/",
+      "type": "Rikstäckande dagspress",
+      "summary": "Rikstäckande kvällstidning, en av kärnorna i Bonnier News.",
+      "facts": {
+        "Ägare": "Bonnier News (helägt av Bonnier Group)"
+      },
+      "people": [
+        {
+          "name": "Klas Granström",
+          "role": "Chefredaktör och ansvarig utgivare (2024)",
+          "source": "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+        }
+      ],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+        }
+      ],
+      "sources": [
+        "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/",
+        "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+      ]
+    },
+    "flamman": {
+      "name": "Flamman",
+      "home": "https://www.flamman.se/",
+      "type": "Partinära media",
+      "summary": "Socialistisk veckotidning med rötter i Norrbotten. Beskriver sig som oberoende socialistisk men står Vänsterpartiet nära genom att bevaka partiet och uppmuntra debatt om dess politik.",
+      "facts": {
+        "Grundad": "1906 i malmfälten (som Norrskensflamman)",
+        "Utgivning": "Veckotidning sedan 1989; redaktionen i Stockholm sedan 1987 (enligt egen presentation)",
+        "Upplaga": "Cirka 3 700 ex/vecka enligt egen presentation (ålder på uppgiften okänd)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Flamman, 'Om Flamman': oberoende socialistisk tidning nära Vänsterpartiet",
+          "source": "https://www.flamman.se/?p=19086"
+        },
+        {
+          "text": "Flamman: tidningen har sedan årsskiftet saknat presstöd (ledare, 'För en entreprenoriell vänster')",
+          "source": "https://www.flamman.se/for-en-entreprenoriell-vanster"
+        }
+      ],
+      "sources": [
+        "https://www.flamman.se/?p=19086",
+        "https://www.flamman.se/for-en-entreprenoriell-vanster",
+        "https://en.wikipedia.org/wiki/List_of_socialist_newspapers_in_Sweden"
+      ],
+      "verify": "Aktuell chefredaktör och ägare behöver fyllas i från Flammans egen sida eller utgivningsbeviset."
+    },
+    "friatider": {
+      "name": "Fria Tider",
+      "home": "https://www.friatider.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Svensk nättidning som beskrivs som högerpopulistisk. Den har i flera studier lyfts fram som en av de nyhetssajter som sprider mest desinformation i Sverige.",
+      "facts": {
+        "Grundad": "2009 (enligt Wikipedia)"
+      },
+      "people": [
+        {
+          "name": "Widar Nord",
+          "role": "Chefredaktör (enligt Wikipedia)",
+          "source": "https://en.wikipedia.org/wiki/Fria_Tider"
+        }
+      ],
+      "described": [
+        {
+          "text": "Wikipedia: svenskspråkig högerpopulistisk nättidning; en analys från Försvarshögskolan som Wikipedia refererar listar den med högst andel desinformation bland svenska källor",
+          "source": "https://en.wikipedia.org/wiki/Fria_Tider"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Fria_Tider"
+      ],
+      "verify": "Beskrivningarna kommer från Wikipedia och bör kontrolleras mot primärkällorna där."
+    },
+    "gd": {
+      "name": "Gefle Dagblad",
+      "home": "https://www.gd.se/",
+      "type": "Regional och lokal press",
+      "summary": "Lokal dagstidning som ingår i Bonnier News Local (tidigare Mittmedia).",
+      "facts": {
+        "Ägare": "Bonnier News Local (Bonnier News, helägt av Bonnier Group)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf"
+        }
+      ],
+      "sources": [
+        "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf",
+        "https://www.svt.se/kultur/bonnier-koper-mittmedia"
+      ]
+    },
+    "gp": {
+      "name": "Göteborgs-Posten",
+      "home": "https://www.gp.se/",
+      "type": "Regional och lokal press",
+      "summary": "Regional morgontidning i Göteborg, en av titlarna i Stampen Media.",
+      "facts": {
+        "Ägare": "Stampen Media, som ägs av Polaris Media (Polaris köpte resterande aktier från NWT Gruppen)"
+      },
+      "people": [
+        {
+          "name": "Christofer Ahlqvist",
+          "role": "Tidigare chefredaktör och ansvarig utgivare på GP; tog över som vd för Stampen Media (uppgift från Stampens pressrum)",
+          "source": "https://www.mynewsdesk.com/se/stampen/pressreleases"
+        }
+      ],
+      "described": [
+        {
+          "text": "Stampen Medias pressrum: GP ingår i Stampen Media",
+          "source": "https://www.mynewsdesk.com/se/stampen/pressreleases"
+        }
+      ],
+      "sources": [
+        "https://www.mynewsdesk.com/se/stampen/pressreleases"
+      ],
+      "verify": "Aktuell chefredaktör bör kontrolleras mot GP:s egen sida."
+    },
+    "hd": {
+      "name": "Helsingborgs Dagblad",
+      "home": "https://www.hd.se/",
+      "type": "Regional och lokal press",
+      "summary": "Regional morgontidning i Helsingborg, en av kärnorna i Bonnier News.",
+      "facts": {
+        "Ägare": "Bonnier News (helägt av Bonnier Group)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+        }
+      ],
+      "sources": [
+        "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+      ]
+    },
+    "ht": {
+      "name": "Hudiksvalls Tidning",
+      "home": "https://www.ht.se/",
+      "type": "Regional och lokal press",
+      "summary": "Lokal dagstidning som ingår i Bonnier News Local (tidigare Mittmedia).",
+      "facts": {
+        "Ägare": "Bonnier News Local (Bonnier News, helägt av Bonnier Group)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf"
+        }
+      ],
+      "sources": [
+        "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf",
+        "https://www.svt.se/kultur/bonnier-koper-mittmedia"
+      ]
+    },
+    "kallkritikbyran": {
+      "name": "Källkritikbyrån",
+      "home": "https://kallkritikbyran.se/",
+      "type": "Faktagranskning",
+      "summary": "Svensk faktagranskningsorganisation som granskar virala påståenden och falska uppgifter på nätet. Startades av de tre journalisterna bakom Metros nedlagda Viralgranskaren och har ansökt om att följa IFCN:s principer för faktagranskare.",
+      "facts": {
+        "Startad": "Oktober 2019 (första granskningen publicerades 10 december 2019)",
+        "Bakgrund": "Fortsättning på Metros nedlagda Viralgranskaren"
+      },
+      "people": [
+        {
+          "name": "Åsa Larsson",
+          "role": "Chefredaktör och ansvarig utgivare; medgrundare (enligt organisationens egen IFCN-ansökan)",
+          "source": "https://mail.ifcncodeofprinciples.poynter.org/application/public/kallkritikbyran/C6AC55DA-36D0-60C9-E682-C19D9938FE68"
+        },
+        {
+          "name": "Jack Werner",
+          "role": "Medgrundare",
+          "source": "https://sverigesradio.se/artikel/7432596"
+        },
+        {
+          "name": "Linnéa Jonjons",
+          "role": "Medgrundare",
+          "source": "https://sverigesradio.se/artikel/7432596"
+        }
+      ],
+      "described": [
+        {
+          "text": "Sveriges Radio (2020): Källkritikbyrån granskar falska påståenden på nätet",
+          "source": "https://sverigesradio.se/artikel/7432596"
+        },
+        {
+          "text": "IFCN-ansökan: faktagranskningsorganisation, fortsättning på Viralgranskaren",
+          "source": "https://mail.ifcncodeofprinciples.poynter.org/application/public/kallkritikbyran/42618B33-4FA9-FBBA-6364-5E0307A7144E"
+        }
+      ],
+      "sources": [
+        "https://sverigesradio.se/artikel/7432596",
+        "https://mail.ifcncodeofprinciples.poynter.org/application/public/kallkritikbyran/42618B33-4FA9-FBBA-6364-5E0307A7144E"
+      ],
+      "verify": "Uppgifterna är från 2019-2020; kontrollera aktuell ansvarig utgivare."
+    },
+    "kvartal": {
+      "name": "Kvartal",
+      "home": "https://kvartal.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Nättidning och mediehus med längre analyser, essäer, granskningar och podcasts. Startades av personer från näringslivet via en insamlingsstiftelse, och övergick hösten 2022 till ett aktiebolag ägt av bland andra chefredaktören och vd:n tillsammans med fristående finansiärer.",
+      "facts": {
+        "Bolag": "Mediehuset Kvartal AB (ägarstruktur sedan hösten 2022, enligt Dealroom)",
+        "Grundad": "2015-2016 (uppgifterna skiljer sig mellan källorna)",
+        "Affärsmodell": "Prenumeration och annonser; en del artiklar bakom betalvägg"
+      },
+      "people": [
+        {
+          "name": "Jörgen Huitfeldt",
+          "role": "Chefredaktör och en av ägarna (enligt Dealroom)",
+          "source": "https://app.dealroom.co/companies/kvartal"
+        },
+        {
+          "name": "Ludde Hellberg",
+          "role": "Vd och en av ägarna (enligt Dealroom)",
+          "source": "https://app.dealroom.co/companies/kvartal"
+        },
+        {
+          "name": "Thomas Gür",
+          "role": "Medgrundare (enligt Dealroom)",
+          "source": "https://app.dealroom.co/companies/kvartal"
+        },
+        {
+          "name": "Erik Åfors",
+          "role": "Medgrundare (enligt Dealroom)",
+          "source": "https://app.dealroom.co/companies/kvartal"
+        }
+      ],
+      "described": [
+        {
+          "text": "Dealroom: politiskt oberoende nättidning för icke-polariserande samhällsanalys (uppgiften är en sammanfattning från en företagsdatabas)",
+          "source": "https://app.dealroom.co/companies/kvartal"
+        }
+      ],
+      "sources": [
+        "https://app.dealroom.co/companies/kvartal",
+        "https://nordic9.com/companies/kvartal-company5262184963"
+      ],
+      "verify": "Uppgifterna kommer från en företagsdatabas och bör kontrolleras mot Kvartals egen om-oss-sida."
+    },
+    "nordfront": {
+      "name": "Nordfront",
+      "home": "https://nordfront.se/",
+      "type": "Organisationsmedia",
+      "summary": "Nättidning som drivs av Nordiska motståndsrörelsen. Sveriges Radio och SVT beskriver organisationen som nazistisk. Sajten har varit föremål för flera rättsliga prövningar kring hets mot folkgrupp.",
+      "facts": {
+        "Ägare/avsändare": "Nordiska motståndsrörelsen (NMR), svenska grenen",
+        "Ansvarig utgivare": "Se utgivningsbevis hos Myndigheten för press, radio och tv (uppgiften har bytt hand över tid)"
+      },
+      "people": [
+        {
+          "name": "Martin Saxlind",
+          "role": "Ansvarig utgivare (uppgift från 2015)",
+          "source": "https://www.sverigesradio.se/artikel/6182444"
+        }
+      ],
+      "described": [
+        {
+          "text": "Sveriges Radio (2015): organ för den nazistiska organisationen Svenska motståndsrörelsen, svenska grenen av Nordiska motståndsrörelsen",
+          "source": "https://www.sverigesradio.se/artikel/6182444"
+        },
+        {
+          "text": "Göteborgs universitet/Segerstedtinstitutet (2018): rapport om Nordiska motståndsrörelsen, som beskrivs som en nationalsocialistisk organisation, med kapitel om Nordfront som kommunikationskanal",
+          "source": "https://svenskakyrkan.se/default.aspx?id=1778672"
+        },
+        {
+          "text": "SVT: Justitiekanslern inledde förundersökning om 175 fall av hets mot folkgrupp på sajten (inlägg 2012-2018)",
+          "source": "https://www.svt.se/kultur/nordfront-misstanks-for-175-fall-av-hets-mot-folkgrupp"
+        },
+        {
+          "text": "SVT Örebro: jury i Örebro tingsrätt ansåg att en tidigare ansvarig utgivare gjort sig skyldig till hets mot folkgrupp i 104 fall (domstolens slutliga dom framgår inte av artikeln)",
+          "source": "https://www.svt.se/nyheter/lokalt/orebro/utgivare-till-nazistisk-sida-anses-skyldig-till-hets-mot-folkgrupp"
+        }
+      ],
+      "sources": [
+        "https://www.sverigesradio.se/artikel/6182444",
+        "https://www.svt.se/kultur/nordfront-misstanks-for-175-fall-av-hets-mot-folkgrupp"
+      ]
+    },
+    "nyadagbladet": {
+      "name": "Nya Dagbladet",
+      "home": "https://nyadagbladet.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Svensk nättidning grundad 2012 som beskriver sig som nationalistisk och vetenskapsskeptisk. Expo betraktar den som en högerextrem webbplats som sprider konspirationsteorier.",
+      "facts": {
+        "Grundad": "2012",
+        "Postadress": "Box 1, Avesta"
+      },
+      "people": [
+        {
+          "name": "Markus Andersson",
+          "role": "Grundare, chefredaktör och utgivare (uppgift enligt en sammanställning som bygger på Wikipedia)",
+          "source": "https://lingua-sinica.org/?p=10329"
+        }
+      ],
+      "described": [
+        {
+          "text": "Sammanställning (bygger på Wikipedia): nationalistisk, vetenskapsskeptisk; Expo anser att den är en högerextrem sajt; ansökte 2021 om mediestöd och nekades",
+          "source": "https://lingua-sinica.org/?p=10329"
+        }
+      ],
+      "sources": [
+        "https://lingua-sinica.org/?p=10329"
+      ],
+      "verify": "Källan är en sekundär sammanställning; kontrollera mot Wikipedia och utgivningsbeviset."
+    },
+    "nyatider": {
+      "name": "Nya Tider",
+      "home": "https://www.nyatider.nu/",
+      "type": "Nätmedia och opinion",
+      "summary": "Veckotidning och nättidning som ges ut av Alternamedia. Expo beskriver den som en högerextrem publikation. Chefredaktören har ett förflutet i Sverigedemokraterna och Nationaldemokraterna.",
+      "facts": {
+        "Utgivare": "Alternamedia (veckotidning och bokförlag)",
+        "Presstöd": "Tidningen har haft presstöd (enligt Sveriges Radio)"
+      },
+      "people": [
+        {
+          "name": "Vávra Suk",
+          "role": "Chefredaktör (uppgift från 2017-2018)",
+          "source": "https://www.svt.se/kultur/nya-tider-staller-ut-pa-bokmassan"
+        }
+      ],
+      "described": [
+        {
+          "text": "SVT (2017): beskrivs av Expo som en högerextrem publikation; avknoppning från Nationaldemokraternas tidning efter ett bråk 2012",
+          "source": "https://www.svt.se/kultur/nya-tider-staller-ut-pa-bokmassan"
+        },
+        {
+          "text": "Sveriges Radio (2017): veckotidning som ges ut av Alternamedia och beskriver sig som en utmanare till 'systemmedia'",
+          "source": "https://sverigesradio.se/artikel/6499049"
+        }
+      ],
+      "sources": [
+        "https://www.svt.se/kultur/nya-tider-staller-ut-pa-bokmassan",
+        "https://sverigesradio.se/artikel/6499049"
+      ],
+      "verify": "Uppgifterna är från 2017-2018; kontrollera aktuell chefredaktör och ansvarig utgivare."
+    },
+    "nyheteridag": {
+      "name": "Nyheter Idag",
+      "home": "https://nyheteridag.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Svensk nättidning grundad 2014 av Chang Frick, som också är chefredaktör. Sajten pekades av Oxford Internet Institutes forskningsprojekt ut som en av tre dominerande 'junk news'-källor i Sverige.",
+      "facts": {
+        "Bolag": "Publicism NITEK AB (enligt Wikipedia)",
+        "Grundad": "Februari 2014 av Chang Frick och Jakob Bergman (enligt Wikipedia, uppgiften om medgrundaren saknar källa där)",
+        "Finansiering": "Huvudsakligen prenumerationer (2020: cirka 2 800 prenumeranter enligt Sveriges Radios Medierna)"
+      },
+      "people": [
+        {
+          "name": "Chang Frick",
+          "role": "Grundare, ägare och chefredaktör (enligt Wikipedia)",
+          "source": "https://en.wikipedia.org/wiki/Nyheter_Idag"
+        }
+      ],
+      "described": [
+        {
+          "text": "Wikipedia: svenskspråkig nättidning som fokuserar på politik, skvaller, sociala medier och utrikesnyheter; interna mejl har visat samarbete med Sverigedemokraterna om publicering",
+          "source": "https://en.wikipedia.org/wiki/Nyheter_Idag"
+        },
+        {
+          "text": "Sveriges Radio Medierna (2020): granskning av sajtens ekonomi; finansieras huvudsakligen av prenumerationer",
+          "source": "https://sverigesradio.se/artikel/7459818"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Nyheter_Idag",
+        "https://sverigesradio.se/artikel/7459818"
+      ]
+    },
+    "proletaren": {
+      "name": "Proletären",
+      "home": "https://proletaren.se/",
+      "type": "Partinära media",
+      "summary": "Veckotidning som ges ut av Kommunistiska Partiet.",
+      "facts": {
+        "Utgivare": "Kommunistiska Partiet (enligt Wikipedia)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Wikipedia (lista över socialistiska tidningar i Sverige): veckotidning utgiven av Sveriges kommunistiska parti",
+          "source": "https://en.wikipedia.org/wiki/List_of_socialist_newspapers_in_Sweden"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/List_of_socialist_newspapers_in_Sweden"
+      ],
+      "verify": "Ansvarig utgivare och chefredaktör behöver fyllas i."
+    },
+    "riks": {
+      "name": "Riks",
+      "home": "https://riks.se/",
+      "type": "Partinära media",
+      "summary": "Nyhets- och videosajt som 2023 uppgavs vara helägd av Sverigedemokraterna. Partiet meddelade samma år att det inte ska äga medier och att sajterna skulle avskiljas. Hur det slutade behöver kontrolleras mot aktuella uppgifter.",
+      "facts": {
+        "Ägare (2023)": "Sverigedemokraterna, via Samtid & Framtid AB (enligt The Local 2023; partiet sa då att media skulle avyttras)"
+      },
+      "people": [
+        {
+          "name": "Dick Erixon",
+          "role": "Medgrundare av Riks tillsammans med Samtid & Framtid (nov 2020, enligt Wikipedia); angavs 2023 som ansvarig utgivare för Riks och Samtiden; invald i EU-parlamentet juli 2024",
+          "source": "https://en.wikipedia.org/wiki/Dick_Erixon"
+        }
+      ],
+      "described": [
+        {
+          "text": "The Local (2023): helägd av SD via Samtid & Framtid AB; SD beslutade att sälja av video- och nyhetssajterna",
+          "source": "https://www.thelocal.se/20230621/far-right-sweden-democrats-to-sell-off-video-and-news-sites"
+        }
+      ],
+      "sources": [
+        "https://www.thelocal.se/20230621/far-right-sweden-democrats-to-sell-off-video-and-news-sites",
+        "https://en.wikipedia.org/wiki/Dick_Erixon"
+      ],
+      "verify": "Ägandet kan ha ändrats efter 2023; kontrollera mot aktuell källa."
+    },
+    "samnytt": {
+      "name": "Samnytt (Samhällsnytt)",
+      "home": "https://samnytt.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "Nättidning som startade 2017 som efterföljare till bloggen Avpixlat. Ett forskningsprojekt vid Oxford Internet Institute pekade ut sajten som en av tre dominerande 'junk news'-källor i Sverige.",
+      "facts": {
+        "Bolag": "Runeskrift AB, i samarbete med Sverigevänliga Intressen (enligt Media Bias/Fact Check)",
+        "Startad": "2017, som efterföljare till Avpixlat",
+        "Finansiering": "Läsardonationer och prenumerationer (enligt Media Bias/Fact Check)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Wikipedia: Samhällsnytt är efterföljare till Avpixlat; Oxford Internet Institute (Project on Computational Propaganda) identifierade den som en av tre främsta 'junk news'-källor i Sverige tillsammans med Nyheter Idag och Fria Tider",
+          "source": "https://en.wikipedia.org/wiki/Samh%C3%A4llsnytt"
+        },
+        {
+          "text": "Media Bias/Fact Check: högerpopulistisk linje med låg faktamässig tillförlitlighet (en utländsk bedömningssajt, inte en myndighet)",
+          "source": "https://mediabiasfactcheck.com/samnytt-bias-and-credibility/"
+        }
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Samh%C3%A4llsnytt",
+        "https://mediabiasfactcheck.com/samnytt-bias-and-credibility/"
+      ],
+      "verify": "Nyckelpersoner och ägare behöver kontrolleras mot utgivningsbeviset hos Myndigheten för press, radio och tv."
+    },
+    "samtiden": {
+      "name": "Samtiden",
+      "home": "https://samtiden.nu/",
+      "type": "Partinära media",
+      "summary": "Svensk nyhets- och opinionssajt med socialkonservativ redaktionell linje, som enligt tillgängliga uppgifter ägs av Sverigedemokraterna. Observera att den inte är densamma som den norska tidskriften Samtiden.",
+      "facts": {
+        "Ägare (2024)": "Sverigedemokraterna via Blåsippan AB (enligt Media Bias/Fact Check, nov 2024); partiet sa 2023 att media ska avyttras, men ingen försäljning var bekräftad vid årsskiftet 2024",
+        "Grundad": "2014 (enligt Media Bias/Fact Check)"
+      },
+      "people": [
+        {
+          "name": "Dick Erixon",
+          "role": "Chefredaktör sedan 2016 (uppgift från 2024); invald i EU-parlamentet juli 2024",
+          "source": "https://mediabiasfactcheck.com/samtiden-bias-and-credibility"
+        }
+      ],
+      "described": [
+        {
+          "text": "Media Bias/Fact Check (2024): socialkonservativ redaktionell linje; bedömer sajten som högerinriktad med tveksam faktamässig tillförlitlighet (en utländsk bedömningssajt, inte en myndighet)",
+          "source": "https://mediabiasfactcheck.com/samtiden-bias-and-credibility"
+        }
+      ],
+      "sources": [
+        "https://mediabiasfactcheck.com/samtiden-bias-and-credibility",
+        "https://en.wikipedia.org/wiki/Dick_Erixon"
+      ],
+      "verify": "Ägande och redaktion kan ha ändrats sedan 2024; kontrollera mot aktuell källa."
+    },
+    "st": {
+      "name": "Sundsvalls Tidning",
+      "home": "https://www.st.nu/",
+      "type": "Regional och lokal press",
+      "summary": "Lokal dagstidning som ingår i Bonnier News Local (tidigare Mittmedia).",
+      "facts": {
+        "Ägare": "Bonnier News Local (Bonnier News, helägt av Bonnier Group)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf"
+        }
+      ],
+      "sources": [
+        "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf",
+        "https://www.svt.se/kultur/bonnier-koper-mittmedia"
+      ]
+    },
+    "svd": {
+      "name": "Svenska Dagbladet",
+      "home": "https://www.svd.se/",
+      "type": "Rikstäckande dagspress",
+      "summary": "Rikstäckande morgontidning i Stockholm, grundad 1884, ägd av Schibsted.",
+      "facts": {
+        "Ägare": "Schibsted (enligt Wikipedia)",
+        "Grundad": "1884"
+      },
+      "people": [
+        {
+          "name": "Lisa Irenius",
+          "role": "Chefredaktör och ansvarig utgivare (2024, enligt TV4; Wikipedia anger henne som chefredaktör)",
+          "source": "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+        }
+      ],
+      "described": [
+        {
+          "text": "Wikipedia: dagstidning i Stockholm, ägd av Schibsted",
+          "source": "https://Www.wikipedia.org/wiki/SvD"
+        }
+      ],
+      "sources": [
+        "https://Www.wikipedia.org/wiki/SvD",
+        "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+      ]
+    },
+    "svt": {
+      "name": "SVT Nyheter",
+      "home": "https://www.svt.se/",
+      "type": "Public service",
+      "summary": "Sveriges Television är det svenska public service-bolaget för tv. SVT Nyheter är dess nyhetsverksamhet, med lokala redaktioner över hela landet.",
+      "facts": {
+        "Typ": "Public service-television, finansierad via en särskild avgift",
+        "Ägare": "Ägs av en stiftelse (Förvaltningsstiftelsen för Sveriges Radio AB, Sveriges Television AB och Sveriges Utbildningsradio AB)",
+        "Politisk etikett": "Obunden (public service)"
+      },
+      "people": [
+        {
+          "name": "Karin Ekman",
+          "role": "Ansvarig utgivare för SVT (2024)",
+          "source": "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+        }
+      ],
+      "described": [],
+      "sources": [
+        "https://www.tv4.se/artikel/1n6TBAJMWCFjelhgSlznpb/sa-svarar-mediecheferna-pa-akessons-tal-oacceptabelt"
+      ],
+      "verify": "Ägarbeskrivningen (stiftelsen) är allmänt känd men har inte källkontrollerats i den här versionen."
+    },
+    "swebbtv": {
+      "name": "Nyheter SwebbTV",
+      "home": "https://nyheter.swebbtv.se/",
+      "type": "Nätmedia och opinion",
+      "summary": "",
+      "facts": {},
+      "people": [],
+      "described": [],
+      "sources": [],
+      "verify": "Ingen verifierad information hittades i den här körningen. Fyll i ägare, ansvarig utgivare och nyckelpersoner från sajtens om-oss-sida eller utgivningsbeviset."
+    },
+    "sydsvenskan": {
+      "name": "Sydsvenskan",
+      "home": "https://www.sydsvenskan.se/",
+      "type": "Regional och lokal press",
+      "summary": "Regional morgontidning i Malmö, en av kärnorna i Bonnier News.",
+      "facts": {
+        "Ägare": "Bonnier News (helägt av Bonnier Group)"
+      },
+      "people": [
+        {
+          "name": "Jonas Kanje",
+          "role": "Chefredaktör (2024, enligt SVT)",
+          "source": "https://www.svt.se/kultur/kulturministern-om-sd-s-mediekritik-olyckligt"
+        }
+      ],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/"
+        }
+      ],
+      "sources": [
+        "https://www.bonnier.com/en/news/bonnier-news-acquires-mittmedia/",
+        "https://www.svt.se/kultur/kulturministern-om-sd-s-mediekritik-olyckligt"
+      ]
+    },
+    "vlt": {
+      "name": "Vestmanlands Läns Tidning (VLT)",
+      "home": "https://www.vlt.se/",
+      "type": "Regional och lokal press",
+      "summary": "Lokal dagstidning som ingår i Bonnier News Local (tidigare Mittmedia).",
+      "facts": {
+        "Ägare": "Bonnier News Local (Bonnier News, helägt av Bonnier Group)"
+      },
+      "people": [],
+      "described": [
+        {
+          "text": "Bonnier News: ingår i Bonnier News verksamhet",
+          "source": "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf"
+        }
+      ],
+      "sources": [
+        "https://www.regeringen.se/contentassets/f1bc7ce7a528424f9c78b077ca5dbb43/bonnier-news-ab.pdf",
+        "https://www.svt.se/kultur/bonnier-koper-mittmedia"
+      ]
+    }
+  }
+}

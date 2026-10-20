@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Artiklar{% endblock %}
+{% macro pager_html(c) %}
+{% if c.pages > 1 %}
+<p class="pager">
+{% for it in c.pager %}{% if it.current %}<b>[{{ it.label }}]</b>{% elif it.url %}<a href="{{ it.url }}" title="{{ it.title }}">{{ it.label }}</a>{% else %}<span class="av">{{ it.label }}</span>{% endif %}
+{% endfor %}
+</p>
+{% endif %}
+{% endmacro %}
+{% block content %}
+<h2>Artiklar</h2>
+<form method="get" action="/artiklar">
+<input type="hidden" name="per_sida" value="{{ c.per }}">
+<fieldset>
+  Källa: <select name="kalla"><option value="">Alla</option>
+    {% for key, name in c.sources %}<option value="{{ key }}" {% if c.filters.kalla == key %}selected{% endif %}>{{ name }}</option>{% endfor %}
+  </select>
+  Typ: <select name="typ"><option value="">Alla</option>
+    {% for t in c.types %}<option value="{{ t }}" {% if c.filters.typ == t %}selected{% endif %}>{{ t }}</option>{% endfor %}
+  </select>
+  Kategori: <input name="kategori" size="10" value="{{ c.filters.kategori }}">
+  Författare: <input name="forfattare" size="12" value="{{ c.filters.forfattare }}">
+  Stad: <input name="stad" size="10" value="{{ c.filters.stad }}">
+  Fritext: <input name="q" size="14" value="{{ c.filters.q }}">
+  <input type="submit" value="Sök">
+</fieldset>
+</form>
+
+{% if not c.rows %}
+<p><b>Inga artiklar hittades.</b> Kör <code>python cli.py run</code> för att fylla arkivet, eller ändra sökningen.</p>
+{% else %}
+<p>Visar {{ c.first }}-{{ c.last }} av {{ c.total }} träffar (sida {{ c.page }} av {{ c.pages }}).</p>
+{{ pager_html(c) }}
+<table class="lista">
+  <tr><th>Datum</th><th>Källa</th><th>Typ</th><th>Kategori</th><th>Rubrik</th><th>Författare</th><th>Plats</th><th>Arkiv</th></tr>
+  {% for a in c.rows %}
+  <tr class="{{ 'udda' if loop.index is odd }}">
+    <td>{{ (a.published or '')[:16].replace('T', ' ') }}</td>
+    <td><a href="/kalla/{{ a.source }}">{{ a.source }}</a></td>
+    <td>{{ a.article_type or '' }}</td>
+    <td>{{ a.category or '' }}</td>
+    <td><a href="/artikel/{{ a.id }}">{{ a.title or a.url }}</a>{% if a.paywalled %} <span class="liten">[betalvägg]</span>{% endif %}</td>
+    <td>{{ a.author or '' }}</td>
+    <td>{{ a.city or a.country or '' }}</td>
+    <td>{{ 'Ja' if a.archived else '-' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{{ pager_html(c) }}
+<form method="get" action="/artiklar">
+  {% for k, v in c.filters.items() %}{% if v %}<input type="hidden" name="{{ k }}" value="{{ v }}">{% endif %}{% endfor %}
+  Gå till sida <input name="sida" size="4" value="{{ c.page }}"> av {{ c.pages }}.
+  Visa <select name="per_sida">{% for n in c.per_options %}<option value="{{ n }}" {% if n == c.per %}selected{% endif %}>{{ n }}</option>{% endfor %}</select> artiklar per sida.
+  <input type="submit" value="Gå">
+</form>
+{% endif %}
+{% endblock %}

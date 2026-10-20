@@ -1,0 +1,451 @@
+[
+  {
+    "key": "expressen",
+    "name": "Expressen",
+    "home": "https://www.expressen.se/",
+    "feeds": [
+      "https://www.expressen.se/rss/nyheter"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "di",
+    "name": "Dagens industri",
+    "home": "https://www.di.se/",
+    "feeds": [
+      "https://www.di.se/feed/"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "nyheteridag",
+    "name": "Nyheter Idag",
+    "home": "https://nyheteridag.se/",
+    "feeds": [
+      "https://nyheteridag.se/feed/",
+      "https://nyheteridag.se/feed/rss/",
+      "https://nyheteridag.se/feed/atom/"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "friatider",
+    "name": "Fria Tider",
+    "home": "https://www.friatider.se/",
+    "feeds": [
+      "https://www.friatider.se/rss.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "samnytt",
+    "name": "Samnytt",
+    "home": "https://samnytt.se/",
+    "feeds": [
+      "https://samnytt.se/feed/"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "arbetet",
+    "name": "Arbetet",
+    "home": "https://arbetet.se/",
+    "feeds": [
+      "https://arbetet.se/feed/",
+      "https://arbetet.se/comments/feed/"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "dagen",
+    "name": "Dagen",
+    "home": "https://www.dagen.se/",
+    "feeds": [
+      "https://www.dagen.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "gp",
+    "name": "Göteborgs-Posten",
+    "home": "https://www.gp.se/",
+    "feeds": [
+      "https://www.gp.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "sydsvenskan",
+    "name": "Sydsvenskan",
+    "home": "https://www.sydsvenskan.se/",
+    "feeds": [
+      "https://www.sydsvenskan.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "hd",
+    "name": "Helsingborgs Dagblad",
+    "home": "https://www.hd.se/",
+    "feeds": [
+      "https://www.hd.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "unt",
+    "name": "Upsala Nya Tidning",
+    "home": "https://www.unt.se/",
+    "feeds": [
+      "https://www.unt.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "na",
+    "name": "Nerikes Allehanda",
+    "home": "https://www.na.se/",
+    "feeds": [
+      "https://www.na.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "corren",
+    "name": "Östgöta Correspondenten",
+    "home": "https://www.corren.se/",
+    "feeds": [
+      "https://www.corren.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "nt",
+    "name": "Norrköpings Tidningar",
+    "home": "https://www.nt.se/",
+    "feeds": [
+      "https://www.nt.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "jp",
+    "name": "Jönköpings-Posten",
+    "home": "https://www.jp.se/",
+    "feeds": [
+      "https://www.jp.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "smp",
+    "name": "Smålandsposten",
+    "home": "https://www.smp.se/",
+    "feeds": [
+      "https://www.smp.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "hallandsposten",
+    "name": "Hallandsposten",
+    "home": "https://www.hallandsposten.se/",
+    "feeds": [
+      "https://www.hallandsposten.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "barometern",
+    "name": "Barometern",
+    "home": "https://www.barometern.se/",
+    "feeds": [
+      "https://www.barometern.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "blt",
+    "name": "Blekinge Läns Tidning",
+    "home": "https://www.blt.se/",
+    "feeds": [
+      "https://www.blt.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "kristianstadsbladet",
+    "name": "Kristianstadsbladet",
+    "home": "https://www.kristianstadsbladet.se/",
+    "feeds": [
+      "https://www.kristianstadsbladet.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "skd",
+    "name": "Skånska Dagbladet",
+    "home": "https://www.skd.se/",
+    "feeds": [
+      "https://www.skd.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "ystadsallehanda",
+    "name": "Ystads Allehanda",
+    "home": "https://www.ystadsallehanda.se/",
+    "feeds": [
+      "https://www.ystadsallehanda.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "ekuriren",
+    "name": "Eskilstuna-Kuriren",
+    "home": "https://www.ekuriren.se/",
+    "feeds": [
+      "https://www.ekuriren.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "vlt",
+    "name": "Vestmanlands Läns Tidning",
+    "home": "https://www.vlt.se/",
+    "feeds": [
+      "https://www.vlt.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "gd",
+    "name": "Gefle Dagblad",
+    "home": "https://www.gd.se/",
+    "feeds": [
+      "https://www.gd.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "ht",
+    "name": "Hudiksvalls Tidning",
+    "home": "https://www.ht.se/",
+    "feeds": [
+      "https://www.ht.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "st",
+    "name": "Sundsvalls Tidning",
+    "home": "https://www.st.nu/",
+    "feeds": [
+      "https://www.st.nu/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "ltz",
+    "name": "Länstidningen Östersund",
+    "home": "https://www.ltz.se/",
+    "feeds": [
+      "https://www.ltz.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "op",
+    "name": "Östersunds-Posten",
+    "home": "https://www.op.se/",
+    "feeds": [
+      "https://www.op.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "nsd",
+    "name": "Norrländska Socialdemokraten",
+    "home": "https://www.nsd.se/",
+    "feeds": [
+      "https://www.nsd.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "kuriren",
+    "name": "Norrbottens-Kuriren",
+    "home": "https://www.kuriren.nu/",
+    "feeds": [
+      "https://www.kuriren.nu/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "norran",
+    "name": "Norran",
+    "home": "https://www.norran.se/",
+    "feeds": [
+      "https://www.norran.se/rss"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "vk",
+    "name": "Västerbottens-Kuriren",
+    "home": "https://www.vk.se/",
+    "feeds": [
+      "https://www.vk.se/feed/"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "nwt",
+    "name": "Nya Wermlands-Tidningen",
+    "home": "https://www.nwt.se/",
+    "feeds": [
+      "https://www.nwt.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "vf",
+    "name": "Värmlands Folkblad",
+    "home": "https://www.vf.se/",
+    "feeds": [
+      "https://www.vf.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "bt",
+    "name": "Borås Tidning",
+    "home": "https://www.bt.se/",
+    "feeds": [
+      "https://www.bt.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "sla",
+    "name": "Skaraborgs Läns Allehanda",
+    "home": "https://www.sla.se/",
+    "feeds": [
+      "https://www.sla.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "mariestadstidningen",
+    "name": "Mariestads-Tidningen",
+    "home": "https://www.mariestadstidningen.se/",
+    "feeds": [
+      "https://www.mariestadstidningen.se/feeds/feed.xml"
+    ],
+    "daily_limit": 30
+  },
+  {
+    "key": "riks",
+    "name": "Riks",
+    "home": "https://riks.se/",
+    "feeds": [
+      "https://riks.se/rss"
+    ]
+  },
+  {
+    "key": "nordfront",
+    "name": "Nordfront",
+    "home": "https://nordfront.se/",
+    "feeds": [
+      "https://nordfront.se/feed/"
+    ]
+  },
+  {
+    "key": "detgodasamhallet",
+    "name": "Det Goda Samhället",
+    "home": "https://detgodasamhallet.com/",
+    "feeds": [
+      "https://detgodasamhallet.com/feed/",
+      "https://detgodasamhallet.com/comments/feed/"
+    ]
+  },
+  {
+    "key": "kallkritikbyran",
+    "name": "Källkritikbyrån",
+    "home": "https://kallkritikbyran.se/",
+    "feeds": [
+      "https://kallkritikbyran.se/feed/"
+    ]
+  },
+  {
+    "key": "samtiden",
+    "name": "Samtiden",
+    "home": "https://samtiden.nu/",
+    "feeds": [
+      "https://samtiden.nu/feed/"
+    ]
+  },
+  {
+    "key": "nyatider",
+    "name": "Nya Tider",
+    "home": "https://www.nyatider.nu/",
+    "feeds": [
+      "https://www.nyatider.nu/feed/"
+    ]
+  },
+  {
+    "key": "nyadagbladet",
+    "name": "Nya Dagbladet",
+    "home": "https://nyadagbladet.se/",
+    "feeds": [
+      "https://nyadagbladet.se/feed/",
+      "https://nyadagbladet.se/comments/feed/"
+    ]
+  },
+  {
+    "key": "nyheter",
+    "name": "Nyheter SwebbTV",
+    "home": "https://nyheter.swebbtv.se/",
+    "feeds": [
+      "https://nyheter.swebbtv.se/feed/"
+    ]
+  },
+  {
+    "key": "flamman",
+    "name": "Flamman",
+    "home": "https://www.flamman.se/",
+    "feeds": [
+      "https://www.flamman.se/feed/",
+      "https://www.flamman.se/comments/feed/"
+    ]
+  },
+  {
+    "key": "proletaren",
+    "name": "Proletären",
+    "home": "https://proletaren.se/",
+    "feeds": [
+      "https://proletaren.se/feed/"
+    ]
+  },
+  {
+    "key": "arbetaren",
+    "name": "Arbetaren",
+    "home": "https://www.arbetaren.se/",
+    "feeds": [
+      "https://www.arbetaren.se/feed/"
+    ]
+  },
+  {
+    "key": "100procent",
+    "name": "100%",
+    "home": "https://www.100.se/",
+    "feeds": [],
+    "index_pages": [
+      "https://www.100.se/artiklar/debatt",
+      "https://www.100.se/artiklar/media-kultur",
+      "https://www.100.se/artiklar/samtal",
+      "https://www.100.se/artiklar/analys"
+    ],
+    "article_regex": "^https://www\\.100\\.se/artiklar/[^/]+/[^/?#]+$"
+  }
+]
