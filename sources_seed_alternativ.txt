@@ -1,0 +1,21 @@
+# Fler källor: nätmedier, opinion, parti- och organisationsmedia. Används med:
+#   python cli.py add-sites sources_seed_alternativ.txt
+# Fria Tider, Samnytt och Nyheter Idag finns redan i sources_seed.txt. Sajter utan RSS-flöde rapporteras av kommandot;
+# då kan de läggas till med --feed eller --index (se `python cli.py hjälp add-site`).
+# 100% (100.se) har listsidor i stället för RSS och läggs till så här (en rad):
+#   python cli.py add-site https://www.100.se --key 100procent --name "100%" --index https://www.100.se/artiklar/debatt --index https://www.100.se/artiklar/media-kultur --index https://www.100.se/artiklar/samtal --index https://www.100.se/artiklar/analys --article-regex '^https://www\.100\.se/artiklar/[^/]+/[^/?#]+$'
+# Frihetsnytt: ange adressen så läggs den till här.
+
+https://riks.se|Riks
+https://nordfront.se|Nordfront
+https://www.epochtimes.se|Epoch Times (Sverige)
+https://kvartal.se|Kvartal
+https://detgodasamhallet.com|Det Goda Samhället
+https://kallkritikbyran.se|Källkritikbyrån
+https://samtiden.nu|Samtiden
+https://www.nyatider.nu|Nya Tider
+https://nyadagbladet.se|Nya Dagbladet
+https://nyheter.swebbtv.se|Nyheter SwebbTV
+https://www.flamman.se|Flamman
+https://proletaren.se|Proletären
+https://www.arbetaren.se|Arbetaren

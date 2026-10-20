@@ -1,0 +1,54 @@
+# Utgångslista för `python cli.py add-sites sources_seed.txt`. En adress per rad, valfritt 'adress|Namn'.
+# OBS: adresserna är skrivna från minnet och inte kontrollerade. Kommandot testar varje sajt (startsida och
+# RSS) och rapporterar de som inte går att nå eller saknar flöde; inget läggs till utan fungerande flöde.
+# Lägg gärna till egna rader, t.ex. fler lokaltidningar. Frihetsnytt: ange adressen så läggs den till här.
+
+# --- Riks och nätmedier ---
+https://www.expressen.se|Expressen
+https://www.svd.se|Svenska Dagbladet
+https://www.di.se|Dagens industri
+https://www.nyheteridag.se|Nyheter Idag
+https://www.friatider.se|Fria Tider
+https://samnytt.se|Samnytt
+https://www.arbetet.se|Arbetet
+https://www.etc.se|Dagens ETC
+https://www.expo.se|Expo
+https://www.fokus.se|Fokus
+https://www.dagen.se|Dagen
+https://sverigesradio.se|Sveriges Radio
+
+# --- Större regionala dagstidningar ---
+https://www.gp.se|Göteborgs-Posten
+https://www.sydsvenskan.se|Sydsvenskan
+https://www.hd.se|Helsingborgs Dagblad
+https://www.unt.se|Upsala Nya Tidning
+https://www.na.se|Nerikes Allehanda
+https://www.corren.se|Östgöta Correspondenten
+https://www.nt.se|Norrköpings Tidningar
+https://www.jp.se|Jönköpings-Posten
+https://www.smp.se|Smålandsposten
+https://www.hallandsposten.se|Hallandsposten
+https://www.barometern.se|Barometern
+https://www.blt.se|Blekinge Läns Tidning
+https://www.kristianstadsbladet.se|Kristianstadsbladet
+https://www.skd.se|Skånska Dagbladet
+https://www.ystadsallehanda.se|Ystads Allehanda
+https://www.ta.se|Trelleborgs Allehanda
+https://www.ekuriren.se|Eskilstuna-Kuriren
+https://www.vlt.se|Vestmanlands Läns Tidning
+https://www.dt.se|Dalarnas Tidningar
+https://www.gd.se|Gefle Dagblad
+https://www.ht.se|Hudiksvalls Tidning
+https://www.st.nu|Sundsvalls Tidning
+https://www.ltz.se|Länstidningen Östersund
+https://www.op.se|Östersunds-Posten
+https://www.nsd.se|Norrländska Socialdemokraten
+https://www.kuriren.nu|Norrbottens-Kuriren
+https://www.norran.se|Norran
+https://www.vk.se|Västerbottens-Kuriren
+https://www.nwt.se|Nya Wermlands-Tidningen
+https://www.vf.se|Värmlands Folkblad
+https://www.bt.se|Borås Tidning
+https://www.sla.se|Skaraborgs Läns Allehanda
+https://www.mariestadstidningen.se|Mariestads-Tidningen
+https://www.folkbladet.se|Folkbladet
