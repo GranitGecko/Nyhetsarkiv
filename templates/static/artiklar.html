@@ -1,0 +1,24 @@
+{% extends "static/base.html" %}
+{% from "_pager.html" import pager_html %}
+{% block title %}Artiklar: {{ scope_name }}{% endblock %}
+{% block content %}
+<h2>Artikelrubriker: {{ scope_name }}</h2>
+<p class="liten">Bara rubrik, datum och länk till originalet visas. Artikeltexterna ingår inte i den här kopian.</p>
+<p>Visar {{ c.first }}-{{ c.last }} av {{ c.total }} (sida {{ c.page }} av {{ c.pages }}).</p>
+{{ pager_html(c) }}
+<table class="lista">
+  <tr><th>Datum</th><th>Källa</th><th>Typ</th><th>Kategori</th><th>Rubrik</th><th>Författare</th></tr>
+  {% for a in c.rows %}
+  <tr class="{{ 'udda' if loop.index is odd }}">
+    <td>{{ (a.published or '')[:10] }}</td>
+    <td><a href="{{ root }}kalla/{{ slugs.get(a.source, a.source) }}.html">{{ names.get(a.source, a.source) }}</a></td>
+    <td>{{ a.article_type or '' }}</td>
+    <td>{{ a.category or '' }}</td>
+    <td>{% if a.link %}<a href="{{ a.link }}" rel="nofollow noopener">{{ a.title or a.url }}</a>{% else %}{{ a.title or a.url }}{% endif %}{% if a.paywalled %} <span class="liten">[betalvägg]</span>{% endif %}</td>
+    <td>{{ a.author or '' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{{ pager_html(c) }}
+<p><a href="{{ root }}index.html">&laquo; Start</a></p>
+{% endblock %}

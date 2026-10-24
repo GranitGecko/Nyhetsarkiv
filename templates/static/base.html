@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>{% block title %}Nyhetsarkivet{% endblock %} - Nyhetsarkivet</title>
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<style>
+{% include "_style.html" %}</style>
+</head>
+<body>
+<table class="sida">
+  <tr><td class="topp"><h1>Nyhetsarkivet</h1><i>Svenska nyheter, samlade på ett ställe</i></td></tr>
+  <tr><td class="meny"><a href="{{ root }}index.html">Start</a> | <a href="{{ root }}kallor.html">Källor</a>{% if with_articles %} | <a href="{{ root }}artiklar/alla/1.html">Artiklar</a>{% endif %}{% if repo_url %} | <a href="{{ repo_url }}">Källkod på GitHub</a>{% endif %}</td></tr>
+  <tr><td class="innehall">{% block content %}{% endblock %}</td></tr>
+  <tr><td class="fot">
+    <span class="knapp88">Python</span> <span class="knapp88">SQLite</span> <span class="knapp88">Inget JS</span><br><br>
+    Statisk version, genererad {{ generated }}. Sökning, API och webbarkivering finns i den lokala versionen.
+  </td></tr>
+</table>
+</body>
+</html>

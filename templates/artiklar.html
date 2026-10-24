@@ -32,10 +32,12 @@
 {% else %}
 <p>Visar {{ c.first }}-{{ c.last }} av {{ c.total }} träffar (sida {{ c.page }} av {{ c.pages }}).</p>
 {{ pager_html(c) }}
+{% if admin %}<form method="post" action="/admin/radera"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="tillbaka" value="{{ here }}">{% endif %}
 <table class="lista">
-  <tr><th>Datum</th><th>Källa</th><th>Typ</th><th>Kategori</th><th>Rubrik</th><th>Författare</th><th>Plats</th><th>Arkiv</th></tr>
+  <tr>{% if admin %}<th>Radera</th>{% endif %}<th>Datum</th><th>Källa</th><th>Typ</th><th>Kategori</th><th>Rubrik</th><th>Författare</th><th>Plats</th><th>Arkiv</th></tr>
   {% for a in c.rows %}
   <tr class="{{ 'udda' if loop.index is odd }}">
+    {% if admin %}<td><input type="checkbox" name="id" value="{{ a.id }}"></td>{% endif %}
     <td>{{ (a.published or '')[:16].replace('T', ' ') }}</td>
     <td><a href="/kalla/{{ a.source }}">{{ a.source }}</a></td>
     <td>{{ a.article_type or '' }}</td>
@@ -47,6 +49,7 @@
   </tr>
   {% endfor %}
 </table>
+{% if admin %}<p class="varning"><label><input type="checkbox" name="bekrafta" value="ja"> Bekräfta: radera de markerade artiklarna (innehåll och rå-HTML tas bort, adressen sparas så att de inte hämtas igen)</label> <input type="submit" value="Radera markerade"></p></form>{% endif %}
 {{ pager_html(c) }}
 <form method="get" action="/artiklar">
   {% for k, v in c.filters.items() %}{% if v %}<input type="hidden" name="{{ k }}" value="{{ v }}">{% endif %}{% endfor %}

@@ -33,5 +33,12 @@
 {% else %}
 <p class="liten">Ingen fångst ännu. Kör <code>python cli.py archive</code>.</p>
 {% endif %}
+{% if admin %}
+<form method="post" action="/admin/radera" class="varning">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="id" value="{{ a.id }}"><input type="hidden" name="tillbaka" value="/artiklar">
+  <b>Admin:</b> <label><input type="checkbox" name="bekrafta" value="ja"> Radera den här artikeln (innehåll och rå-HTML tas bort, adressen sparas så att den inte hämtas igen)</label>
+  <input type="submit" value="Radera">
+</form>
+{% endif %}
 <p><a href="/artiklar">&laquo; Alla artiklar</a> | <a href="/api/articles/{{ a.id }}">Visa som JSON</a></p>
 {% endblock %}

@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS articles (
     image TEXT, lang TEXT, paywalled INTEGER,
     country TEXT, city TEXT, locations TEXT,
     source_political_label TEXT,
-    hint_date TEXT                                -- ungefärlig tid för artiklar hittade via sitemap/länkar
+    hint_date TEXT,                               -- ungefärlig tid för artiklar hittade via sitemap/länkar
+    deleted_at TEXT                               -- satt när en admin raderat innehållet (status 'deleted')
 );
 CREATE INDEX IF NOT EXISTS ix_status   ON articles(source, status);
 CREATE INDEX IF NOT EXISTS ix_pub      ON articles(published);
@@ -44,6 +45,16 @@ CREATE TABLE IF NOT EXISTS snapshots (
 );
 CREATE INDEX IF NOT EXISTS ix_snap_article ON snapshots(article_id, status);
 CREATE INDEX IF NOT EXISTS ix_snap_source  ON snapshots(source, taken_at);
+
+-- Logg över administratörens ändringar.
+CREATE TABLE IF NOT EXISTS admin_log (
+    id INTEGER PRIMARY KEY,
+    at TEXT NOT NULL,
+    actor TEXT,
+    action TEXT NOT NULL,
+    detail TEXT,
+    ip TEXT
+);
 
 -- Artiklar vars länkar redan genomsökts efter fler artiklar ('snowball').
 CREATE TABLE IF NOT EXISTS links_scanned (article_id INTEGER PRIMARY KEY);
@@ -78,6 +89,8 @@ def _init():
                 cols = {r[1] for r in con.execute("PRAGMA table_info(articles)")}
                 if "hint_date" not in cols:          # äldre databaser
                     con.execute("ALTER TABLE articles ADD COLUMN hint_date TEXT")
+                if "deleted_at" not in cols:
+                    con.execute("ALTER TABLE articles ADD COLUMN deleted_at TEXT")
                 snap_cols = {r[1] for r in con.execute("PRAGMA table_info(snapshots)")}
                 if "notes" not in snap_cols:         # äldre databaser
                     con.execute("ALTER TABLE snapshots ADD COLUMN notes TEXT")

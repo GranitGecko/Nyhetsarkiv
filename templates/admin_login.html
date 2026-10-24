@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+<h2>Administration</h2>
+{% if not enabled %}
+<p class="varning"><b>Administrationen är avstängd.</b> Ingen kan logga in förrän ett lösenord har satts. Gör det i en terminal på den dator där
+arkivet körs: <code>python cli.py admin-password</code></p>
+{% else %}
+{% if error %}<p class="varning">{{ error }}</p>{% endif %}
+<form method="post" action="/admin/login">
+  Lösenord: <input type="password" name="losenord" size="24" autofocus>
+  <input type="submit" value="Logga in">
+</form>
+<p class="liten">Efter fem felaktiga försök spärras inloggningen i en minut. Inloggningen gäller i 8 timmar.</p>
+{% endif %}
+{% endblock %}

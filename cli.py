@@ -370,6 +370,75 @@ def cmd_profiles(args):
     print("\nRätta eller lägg till profiler i data/profiles.json (formatet finns i content/profiles.json). Varje uppgift om en person kräver en källa.")
 
 
+def cmd_admin_password(args):
+    import getpass
+
+    import admin
+    if args.disable:
+        admin.disable_admin()
+        print("Administrationen är avstängd och alla inloggningar har loggats ut.")
+        return
+    first = getpass.getpass(f"Nytt admin-lösenord (minst {admin.MIN_PASSWORD} tecken): ")
+    if first != getpass.getpass("Upprepa lösenordet: "):
+        raise SystemExit("Lösenorden var inte lika. Inget ändrades.")
+    try:
+        admin.set_password(first)
+    except ValueError as exc:
+        raise SystemExit(str(exc))
+    print("Klart. Logga in på /admin/login (till exempel http://127.0.0.1:8000/admin/login). Tidigare inloggningar har loggats ut.")
+
+
+def cmd_delete(args):
+    """Radera artiklars innehåll (adressen sparas så att den inte hämtas igen). Utan --yes visas bara vad som skulle raderas."""
+    import admin
+    con = db.connect()
+    if args.ids:
+        ids = args.ids
+    elif args.site and args.before:
+        marks = ",".join("?" for _ in args.site)
+        ids = [r[0] for r in con.execute(
+            f"SELECT id FROM articles WHERE source IN ({marks}) AND status!='deleted' "
+            "AND COALESCE(published, hint_date, discovered_at) < ?", (*args.site, args.before))]
+    else:
+        raise SystemExit("Ange artikel-id (python cli.py delete 123 456) eller --site och --before (python cli.py delete --site svt --before 2025-01-01).")
+    marks = ",".join("?" for _ in ids) or "NULL"
+    rows = con.execute(f"SELECT id, source, url, status FROM articles WHERE id IN ({marks}) AND status!='deleted'", ids).fetchall()
+    print(f"{len(rows)} artiklar skulle raderas (innehåll och rå-HTML tas bort; adressen sparas):")
+    for r in rows[:10]:
+        print(f"  #{r['id']} {r['source']} {r['url']}")
+    if len(rows) > 10:
+        print(f"  ... och {len(rows) - 10} till")
+    if not rows:
+        return
+    if not args.yes:
+        print("\nInget raderades. Kör om med --yes för att radera på riktigt.")
+        return
+    res = admin.delete_articles(con, [r["id"] for r in rows], actor="cli")
+    print(f"\nRaderade {len(res['deleted'])} artiklar, {res['raw_removed']} rå-HTML-filer togs bort.")
+    if res["warc_files"]:
+        print("Webbarkivfiler (WARC) ändras inte och innehåller fortfarande sidorna: " + ", ".join(res["warc_files"]))
+
+
+def cmd_export_site(args):
+    import export_site
+    import profiles as prof
+    con = db.connect()
+    try:
+        res = export_site.export_site(con, SITES, prof.load(), args.out, with_articles=args.with_articles,
+                                      per_page=args.per_page, repo_url=args.repo_url, force=args.force)
+    except export_site.ExportError as exc:
+        raise SystemExit(str(exc))
+    finally:
+        con.close()
+    print(f"Skrev {res['pages']} sidor till {res['out']}/ (öppna {res['out']}/index.html i webbläsaren för att titta).")
+    if args.with_articles:
+        print("OBS: artikellistorna innehåller rubrik, datum och länk till originalet (aldrig text), men de är insamlat material. "
+              "Fundera på om du vill publicera dem.")
+    else:
+        print("Inga artiklar ingår (bara startsida, källor och profiler).")
+    print(f"Nästa steg: git add {args.out} && git commit -m \"Uppdatera webbplatsen\" && git push, och ställ in GitHub Pages på mappen {args.out} (se README).")
+
+
 def cmd_sites(args):
     print(f"{'nyckel':18}{'namn':34}{'flöden':>7}  arkivering  startsida")
     for s in SITES.values():
@@ -459,6 +528,33 @@ Kommandot visar vilka källor som saknar profil, vilka profiler som är markerad
 
 Exempel:
   python cli.py profiles"""),
+    "admin-password": (cmd_admin_password, "sätt lösenord för administratören (kan radera artiklar på webbplatsen)", "python cli.py admin-password [--disable]", """
+Administration på webbplatsen är avstängd tills du sätter ett lösenord. Lösenordet frågas efter i terminalen (visas inte), sparas
+som en hash i data/settings.json och följer med när du kopierar data-mappen. Ett nytt lösenord loggar ut alla gamla inloggningar.
+Gör webbplatsen bara tillgänglig på din egen dator (standard) och lägg den bakom HTTPS om andra ska nå den.
+
+Exempel:
+  python cli.py admin-password
+  python cli.py admin-password --disable          (stäng av administrationen igen)"""),
+    "delete": (cmd_delete, "radera artiklar (innehållet tas bort, adressen sparas)", "python cli.py delete [ID ...] [flaggor]", """
+Raderar artiklarnas innehåll och sparade rå-HTML. Adressen behålls med status 'deleted' så att artikeln inte hämtas in igen vid nästa
+körning. Webbarkivfilerna (WARC) är append-only och ändras inte; kommandot visar vilka filer som fortfarande innehåller sidorna.
+Utan --yes visas bara vad som skulle raderas. Raderingen loggas.
+
+Exempel:
+  python cli.py delete 123 456                      (visar vad som skulle raderas)
+  python cli.py delete 123 456 --yes
+  python cli.py delete --site svt --before 2025-01-01 --yes     (alla från en källa före ett datum)"""),
+    "export-site": (cmd_export_site, "skapa en statisk version av webbplatsen (för GitHub Pages)", "python cli.py export-site [flaggor]", """
+GitHub Pages kan bara visa färdiga HTML-filer, inte köra programmet. Det här kommandot genererar en statisk version av webbplatsen:
+startsida, källöversikt och en sida per källa med ägare och nyckelpersoner (med källhänvisningar), utan skript. Artikeltexter,
+ingresser och webbarkiv ingår aldrig. Med --with-articles läggs även listor med rubrik, datum och länk till originalet till.
+Mappen får en markeringsfil så att nästa export bara ersätter sina egna filer (och vägrar skriva i en mapp med annat innehåll).
+
+Exempel:
+  python cli.py export-site                                  (skriver till mappen docs)
+  python cli.py export-site --repo-url https://github.com/dittnamn/Nyhetsarkiv
+  python cli.py export-site --with-articles --per-page 100   (även rubriklistor, utan artikeltext)"""),
     "sites": (cmd_sites, "lista alla sajter", "python cli.py sites", """
 Visar nyckel, namn, antal RSS-flöden och om webbarkivering är på för varje sajt, både de inbyggda
 (SVT, DN, Aftonbladet) och de du lagt till i sources.json. Nycklarna används med --site.
@@ -590,11 +686,13 @@ Exempel:
 }
 
 GROUPS = [
-    ("Inställningar", ["contact"]),
+    ("Inställningar", ["contact", "admin-password"]),
     ("Lägg till och se sajter", ["sites", "add-site", "add-sites", "check-feeds", "profiles"]),
     ("Samla in och arkivera", ["run", "archive", "all", "status", "verify"]),
     ("Enskilda steg", ["discover", "fetch", "parse"]),
     ("Gå bakåt i tiden", ["probe", "backfill", "snowball", "wayback"]),
+    ("Underhåll", ["delete"]),
+    ("Publicera", ["export-site"]),
 ]
 
 MAIN_HELP = """\
@@ -669,7 +767,7 @@ def _commands_listing():
 
 
 def add_args(name, p):
-    if name not in ("sites", "add-site", "add-sites", "verify", "contact", "profiles"):
+    if name not in ("sites", "add-site", "add-sites", "verify", "contact", "profiles", "admin-password", "export-site"):
         p.add_argument("--site", nargs="*", metavar="NYCKEL", help=SITE_HELP)
     if name == "add-site":
         p.add_argument("url", help="sajtens adress, t.ex. https://www.nyheteridag.se")
@@ -682,6 +780,18 @@ def add_args(name, p):
                        help="listsida att läsa artikellänkar från när RSS saknas, t.ex. en sektionssida (kan upprepas)")
         p.add_argument("--article-regex", metavar="MÖNSTER",
                        help="regex som artikeladresser ska matcha (behövs oftast med --index)")
+    if name == "export-site":
+        p.add_argument("--out", default="docs", metavar="MAPP", help="mapp att skriva till (standard docs)")
+        p.add_argument("--with-articles", action="store_true", help="ta med listor med artikelrubriker (aldrig text) och länkar till originalen")
+        p.add_argument("--per-page", type=int, default=100, metavar="N", help="rubriker per sida i listorna (standard 100)")
+        p.add_argument("--repo-url", metavar="ADRESS", help="adress till GitHub-repot, visas som länk i menyn")
+        p.add_argument("--force", action="store_true", help="skriv även om mappen innehåller filer som inte kommer från en tidigare export")
+    if name == "admin-password":
+        p.add_argument("--disable", action="store_true", help="stäng av administrationen och logga ut alla")
+    if name == "delete":
+        p.add_argument("ids", nargs="*", type=int, metavar="ID", help="artikel-id att radera (id står i adressen /artikel/<id>)")
+        p.add_argument("--before", metavar="ÅÅÅÅ-MM-DD", help="med --site: radera allt som är äldre än detta datum")
+        p.add_argument("--yes", action="store_true", help="radera på riktigt (utan den visas bara vad som skulle raderas)")
     if name == "contact":
         p.add_argument("email", metavar="EPOST", help="din e-postadress eller en annan kontaktväg")
     if name == "verify":

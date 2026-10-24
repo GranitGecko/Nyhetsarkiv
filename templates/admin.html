@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+<h2>Administration</h2>
+<table class="meta">
+  {% for st, n in status.items() %}<tr><td><b>{{ st }}:</b></td><td>{{ n }}</td></tr>{% endfor %}
+</table>
+
+<h3>Radera artiklar</h3>
+<form method="post" action="/admin/radera">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="tillbaka" value="/admin">
+  Artikel-id (flera avgränsas med komma eller blanksteg): <input name="ids" size="30">
+  <label><input type="checkbox" name="bekrafta" value="ja"> Bekräfta</label>
+  <input type="submit" value="Radera">
+</form>
+<p class="liten">Artikelns innehåll och sparade rå-HTML tas bort, men adressen finns kvar med status <i>deleted</i> så att den inte hämtas in igen.
+Webbarkivfiler (WARC) ändras inte; vid radering visas vilka filer som fortfarande innehåller sidorna. Du kan också radera i artikellistan och på artikelsidan.
+Många på en gång: <code>python cli.py delete --site svt --before 2025-01-01</code>.</p>
+
+<h3>Senast raderade</h3>
+{% if deleted %}
+<table class="lista">
+  <tr><th>Id</th><th>Källa</th><th>Adress</th><th>Raderad (UTC)</th></tr>
+  {% for d in deleted %}<tr class="{{ 'udda' if loop.index is odd }}"><td>{{ d.id }}</td><td>{{ d.source }}</td><td>{{ d.url }}</td><td>{{ (d.deleted_at or '')[:16].replace('T', ' ') }}</td></tr>{% endfor %}
+</table>
+{% else %}<p class="liten">Inga raderade artiklar.</p>{% endif %}
+
+<h3>Logg</h3>
+{% if log %}
+<table class="lista">
+  <tr><th>Tid (UTC)</th><th>Av</th><th>Händelse</th><th>Detaljer</th><th>IP</th></tr>
+  {% for l in log %}<tr class="{{ 'udda' if loop.index is odd }}"><td>{{ l.at[:19].replace('T', ' ') }}</td><td>{{ l.actor }}</td><td>{{ l.action }}</td><td>{{ l.detail }}</td><td>{{ l.ip or '' }}</td></tr>{% endfor %}
+</table>
+{% else %}<p class="liten">Inga händelser ännu.</p>{% endif %}
+
+<form method="post" action="/admin/logga-ut"><input type="hidden" name="csrf" value="{{ csrf }}"><p><input type="submit" value="Logga ut"></p></form>
+{% endblock %}

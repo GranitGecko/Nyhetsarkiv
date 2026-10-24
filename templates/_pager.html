@@ -1,0 +1,8 @@
+{% macro pager_html(c) %}
+{% if c.pages > 1 %}
+<p class="pager">
+{% for it in c.pager %}{% if it.current %}<b>[{{ it.label }}]</b>{% elif it.url %}<a href="{{ it.url }}" title="{{ it.title }}">{{ it.label }}</a>{% else %}<span class="av">{{ it.label }}</span>{% endif %}
+{% endfor %}
+</p>
+{% endif %}
+{% endmacro %}

@@ -1,8 +1,12 @@
 """API (/api/...) och webbplatsen i 2005 års stil. Kör: uvicorn api:app --reload"""
+from urllib.parse import parse_qs, urlencode
+
 from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+import admin
 import db
 import profiles as prof
 import queries
@@ -39,7 +43,7 @@ def api_article(article_id: int):
     con = db.connect()
     try:
         r = con.execute("SELECT * FROM articles WHERE id=?", (article_id,)).fetchone()
-        if not r:
+        if not r or r["status"] == "deleted":
             raise HTTPException(404, "Artikeln finns inte")
         d = queries.row(r)
         d.pop("raw_path", None)
@@ -96,8 +100,39 @@ def api_stats():
 
 # ---- Webbplatsen -------------------------------------------------------------
 
-def _page(request, name, context):
-    return templates.TemplateResponse(request, name, {"count": None, **context})
+COOKIE = "nyhetsarkivet_admin"
+_limiter = admin.RateLimiter()
+
+
+def _session(request):
+    return admin.parse_session(request.cookies.get(COOKIE))
+
+
+def _ip(request):
+    return request.client.host if getattr(request, "client", None) else "okänd"
+
+
+async def _form(request):
+    if int(request.headers.get("content-length") or 0) > 1_000_000:
+        raise HTTPException(413, "För stor förfrågan")
+    return parse_qs((await request.body()).decode("utf-8", "replace"), keep_blank_values=True)
+
+
+def _first(form, key):
+    return (form.get(key) or [""])[0]
+
+
+def _page(request, name, context, status_code=200):
+    session = _session(request)
+    ctx = {"count": None, "admin": bool(session), "csrf": admin.csrf_token(session),
+           # Meddelanden visas bara för inloggad admin, så att ingen kan få en egen text att visas på sidan via en länk.
+           "message": request.query_params.get("meddelande", "")[:500] if session else "", **context}
+    return templates.TemplateResponse(request, name, ctx, status_code=status_code)
+
+
+def _back(url, message):
+    sep = "&" if "?" in url else "?"
+    return RedirectResponse(url + sep + urlencode({"meddelande": message}), status_code=303)
 
 
 @app.get("/")
@@ -114,11 +149,13 @@ def start(request: Request):
 def articles_page(request: Request):
     con = db.connect()
     try:
-        ctx = webui.articles_context(con, dict(request.query_params), SITES)
+        params = {k: v for k, v in dict(request.query_params).items() if k != "meddelande"}
+        ctx = webui.articles_context(con, params, SITES)
+        ctx["here"] = "/artiklar" + ("?" + urlencode(params) if params else "")
         ctx["count"] = con.execute("SELECT COUNT(*) FROM articles WHERE status='parsed'").fetchone()[0]
     finally:
         con.close()
-    return _page(request, "artiklar.html", {"c": ctx, "count": ctx["count"]})
+    return _page(request, "artiklar.html", {"c": ctx, "count": ctx["count"], "here": ctx["here"]})
 
 
 @app.get("/kallor")
@@ -151,7 +188,7 @@ def article_page(request: Request, article_id: int):
         snaps = queries.snapshots(con, article_id) if r else []
     finally:
         con.close()
-    if not r:
+    if not r or r["status"] == "deleted":
         raise HTTPException(404, "Artikeln finns inte")
     a = queries.row(r)
     a["paragraphs"] = [p for p in (a.get("body") or "").split("\n") if p.strip()]
@@ -171,3 +208,84 @@ def snapshots_page(request: Request):
         con.close()
     return _page(request, "fangster.html", {"snaps": [queries.snap(r) for r in rows], "n": total[0],
                                             "mb": total[1] / 1024 / 1024})
+
+
+# ---- Administration (avstängd tills ett lösenord satts: python cli.py admin-password) ----------------
+
+@app.get("/admin/login")
+def admin_login_page(request: Request):
+    return _page(request, "admin_login.html", {"enabled": admin.admin_enabled(), "error": ""})
+
+
+@app.post("/admin/login")
+async def admin_login(request: Request):
+    if not admin.admin_enabled():
+        return _page(request, "admin_login.html", {"enabled": False, "error": ""}, 403)
+    ip = _ip(request)
+    if not _limiter.allowed(ip):
+        return _page(request, "admin_login.html", {"enabled": True, "error": "För många försök. Vänta en minut."}, 429)
+    form = await _form(request)
+    con = db.connect()
+    try:
+        if admin.check_password(_first(form, "losenord")):
+            _limiter.success(ip)
+            admin.log(con, "inloggning", "", ip)
+            resp = RedirectResponse("/admin", status_code=303)
+            resp.set_cookie(COOKIE, admin.make_session(), max_age=admin.SESSION_SECONDS, httponly=True,
+                            samesite="strict", secure=request.url.scheme == "https", path="/")
+            return resp
+        _limiter.fail(ip)
+        admin.log(con, "misslyckad inloggning", "", ip)
+    finally:
+        con.close()
+    return _page(request, "admin_login.html", {"enabled": True, "error": "Fel lösenord."}, 401)
+
+
+@app.get("/admin")
+def admin_page(request: Request):
+    if not _session(request):
+        return RedirectResponse("/admin/login", status_code=303)
+    con = db.connect()
+    try:
+        ctx = webui.admin_context(con)
+    finally:
+        con.close()
+    return _page(request, "admin.html", ctx)
+
+
+@app.post("/admin/radera")
+async def admin_delete(request: Request):
+    session = _session(request)
+    if not session:
+        return RedirectResponse("/admin/login", status_code=303)
+    form = await _form(request)
+    if not admin.csrf_ok(session, _first(form, "csrf")):
+        raise HTTPException(403, "Ogiltig begäran (CSRF)")
+    back = admin.safe_return(_first(form, "tillbaka"))
+    if _first(form, "bekrafta") != "ja":
+        return _back(back, "Inget raderades: kryssa i bekräftelsen först.")
+    raw_ids = list(form.get("id", [])) + _first(form, "ids").replace(",", " ").split()
+    ids = [int(x) for x in raw_ids if x.strip().isdigit()][:500]
+    if not ids:
+        return _back(back, "Inget raderades: inga artikel-id angavs.")
+    con = db.connect()
+    try:
+        res = admin.delete_articles(con, ids, ip=_ip(request))
+    finally:
+        con.close()
+    msg = f"Raderade {len(res['deleted'])} artikel(ar)."
+    if res["skipped"]:
+        msg += f" {len(res['skipped'])} fanns inte eller var redan raderade."
+    if res["warc_files"]:
+        msg += " Webbarkivfiler som fortfarande innehåller sidorna: " + ", ".join(res["warc_files"]) + "."
+    return _back(back, msg)
+
+
+@app.post("/admin/logga-ut")
+async def admin_logout(request: Request):
+    session = _session(request)
+    form = await _form(request)
+    resp = RedirectResponse("/", status_code=303)
+    if session and admin.csrf_ok(session, _first(form, "csrf")):
+        resp.delete_cookie(COOKIE, path="/")
+    return resp

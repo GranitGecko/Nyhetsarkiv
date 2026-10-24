@@ -1,0 +1,29 @@
+{% extends "static/base.html" %}
+{% block title %}Start{% endblock %}
+{% block content %}
+<h2>Välkommen till Nyhetsarkivet</h2>
+{% include "_purpose.html" %}
+
+<table class="meta">
+  <tr><td><b>Artiklar i arkivet:</b></td><td>{{ total }}</td></tr>
+  <tr><td><b>Källor:</b></td><td>{{ n_sources }} ({{ n_with_articles }} med artiklar hittills)</td></tr>
+  <tr><td><b>Senaste artikel:</b></td><td>{{ (latest or '-')[:10] }}</td></tr>
+</table>
+<p><a href="kallor.html"><b>&raquo; Alla källor i en tabell</b></a>{% if with_articles %} | <a href="artiklar/alla/1.html">Artikelrubriker</a>{% endif %}</p>
+
+<h3>Källor</h3>
+{% for type, entries in groups %}
+  <p><b>{{ type }}</b></p>
+  <ul class="kallor">
+  {% for e in entries %}
+    <li><a href="kalla/{{ slugs[e.key] }}.html">{{ e.name }}</a>
+      {% if e.in_archive %}<span class="liten">({{ e.stats.get('articles', 0) }} artiklar)</span>{% else %}<span class="liten">(ännu inte tillagd i arkivet)</span>{% endif %}</li>
+  {% endfor %}
+  </ul>
+{% endfor %}
+
+<p class="liten">Uppgifterna om ägare och nyckelpersoner är sammanställda från offentliga källor och kan innehålla fel eller vara
+inaktuella{% if checked %} (senast genomgångna {{ checked }}){% endif %}. Se varje källas sida för länkarna.</p>
+<p class="liten">Det här är en <b>statisk kopia</b> av presentationen. {% if with_articles %}Artikellistorna visar bara rubrik, datum och länk till originalet, aldrig artikeltexter.{% else %}Själva artiklarna ingår inte.{% endif %}
+Arkivet i sig (artikeltexter och webbarkiv) publiceras inte, eftersom materialet är upphovsrättsskyddat.</p>
+{% endblock %}

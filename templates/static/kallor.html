@@ -1,0 +1,19 @@
+{% extends "static/base.html" %}
+{% block title %}Källor{% endblock %}
+{% block content %}
+<h2>Källor</h2>
+<p>{{ n_sources }} källor. Klicka på ett namn för att läsa om vem som ligger bakom.</p>
+{% for type, entries in groups %}
+<h3>{{ type }}</h3>
+<table class="lista">
+  <tr><th>Källa</th><th>Ägare / bakgrund</th><th>Artiklar</th></tr>
+  {% for e in entries %}
+  <tr class="{{ 'udda' if loop.index is odd }}">
+    <td><a href="kalla/{{ slugs[e.key] }}.html">{{ e.name }}</a></td>
+    <td>{% if e.profile %}{{ e.profile.facts.get('Ägare') or e.profile.facts.get('Bolag') or e.profile.facts.get('Utgivare') or e.profile.facts.get('Ägare/avsändare') or e.profile.facts.get('Ägare (2024)') or e.profile.facts.get('Ägare (2023)') or '' }}{% else %}<span class="liten">ingen profil ännu</span>{% endif %}</td>
+    <td>{% if e.in_archive %}{{ e.stats.get('articles', 0) }}{% else %}<span class="liten">inte tillagd</span>{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endfor %}
+{% endblock %}

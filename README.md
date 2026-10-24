@@ -5,6 +5,8 @@ lokala dagstidningar, nätmedier och opinionssajter över hela spektrumet, samt 
 sökbart via ett **JSON-API** och en **webbplats i 2005 års stil** med startsida, en sida per källa (ägare och nyckelpersoner
 med källhänvisningar) och en artikellista med sidnavigering. Lättviktigt: Python, SQLite, ingen React, ingen TypeScript.
 
+**Webbplats (statisk version): https://granitgecko.github.io/Nyhetsarkiv/**
+
 *English: a lightweight Python tool that collects, parses and web-archives (WARC) Swedish news sites, from public service and
 local papers to alternative and partisan media, and serves them through a JSON API and a retro 2005-style website. Documentation
 is in Swedish. See "Juridik och etik" below before using it.*
@@ -37,7 +39,49 @@ Kräver Python 3.12 eller nyare. Allt du samlar in hamnar i `data/` (ignoreras a
 - **Källor** (`/kallor`, `/kalla/<nyckel>`): en sida per källa med ägare, nyckelpersoner, hur källan beskrivs och länkar till källorna för uppgifterna.
 - **Artiklar** (`/artiklar`): sök och filtrera, välj antal per sida (25/50/100/200) och navigera med första, -5, föregående, sidnummer, nästa, +5 och sista, eller hoppa direkt till en sida.
 - **Fångster** (`/fangster`): webbarkiverade sidor. **API:** `/docs`.
+- **Admin** (`/admin`): inloggning för att radera artiklar. Avstängd tills du sätter ett lösenord (se nedan).
 Källprofiler: `python cli.py profiles` visar vilka källor som saknar profil eller bör kontrolleras. Egna rättelser läggs i `data/profiles.json`.
+
+## Publicera på GitHub Pages
+GitHub Pages kan bara visa färdiga HTML-filer, inte köra programmet (Python, databas, inloggning). Utan en statisk webbplats i
+repot visar Pages i stället README-filen. Så här publicerar du webbplatsen:
+
+1. Generera den statiska versionen från din egen databas (i projektmappen):
+   ```
+   python cli.py export-site --repo-url https://github.com/granitgecko/Nyhetsarkiv
+   ```
+   Det skapar mappen `docs/` med startsida, källöversikt och en sida per källa (ägare och nyckelpersoner med källhänvisningar).
+2. Checka in och pusha: `git add docs`, `git commit -m "Uppdatera webbplatsen"`, `git push`.
+3. På GitHub: **Settings, Pages, Build and deployment**. Välj *Deploy from a branch*, branch `main` och mappen **/docs**, och spara.
+   Efter någon minut visas webbplatsen på adressen som GitHub anger (README-sidan är då ersatt av webbplatsen).
+
+Kör om `export-site` och pusha när du vill uppdatera siffrorna eller profilerna.
+
+**Vad som publiceras.** Som standard ingår inga artiklar alls, bara presentation, siffror och källprofiler. Artikeltexter, ingresser och
+webbarkiv (WARC) exporteras aldrig. Med `--with-articles` läggs sidnavigerade listor med **rubrik, datum och länk till originalet** till
+(markerade så att sökmotorer inte indexerar dem). Det är fortfarande insamlat material, så fundera på om du vill publicera det.
+Sökning, API, inloggning och webbarkivering ingår inte i den statiska versionen; de körs lokalt med `uvicorn api:app`.
+Vill du köra den dynamiska versionen på en server behövs en värd som kan köra Python, men tänk då på upphovsrätten och att adminfunktionen inte ska exponeras.
+
+## Administration: radera artiklar
+Webbplatsen är skrivskyddad för besökare. En administratör kan radera artiklar, men bara om du aktivt slagit på det:
+```
+python cli.py admin-password            # frågar efter ett lösenord (minst 10 tecken), en gång
+python cli.py admin-password --disable  # stäng av igen (loggar ut alla)
+```
+Logga sedan in på `/admin/login`. Därefter syns rutor för att markera artiklar i listan, en raderaknapp på artikelsidan och en
+adminsida (`/admin`) med logg och lista över raderade artiklar. Många på en gång: `python cli.py delete --site svt --before 2025-01-01`
+(utan `--yes` visas bara vad som skulle raderas).
+
+**Vad "radera" betyder.** Artikelns innehåll och sparade rå-HTML tas bort, men adressen finns kvar med status `deleted`, annars
+skulle nästa körning hämta in artikeln igen. Webbarkivfilerna (WARC) är append-only och ändras inte; raderingen visar vilka filer
+som fortfarande innehåller sidorna, så att du själv kan ta bort dem om det behövs. Alla raderingar loggas.
+
+**Säkerhet.** Inga standardlösenord: utan lösenord går det inte att logga in. Lösenordet sparas som PBKDF2-hash i `data/settings.json`
+(ignoreras av git). Inloggningen gäller 8 timmar (HttpOnly- och SameSite=Strict-kaka), ändringar kräver en CSRF-token och en
+bekräftelsekryssruta, och efter fem felaktiga försök spärras inloggningen i en minut. Ett nytt lösenord loggar ut alla gamla sessioner.
+Kör webbplatsen bara på din egen dator (`uvicorn` lyssnar som standard på 127.0.0.1). Ska andra nå den: lägg den bakom HTTPS
+(med `--proxy-headers` om du använder en omvänd proxy) och överväg om adminfunktionen ska vara påslagen alls.
 
 ## Uppdatera till en ny version
 Allt personligt ligger i mappen `data/`: databasen, rå-HTML, webbarkivet (WARC), `sources.json` (dina sajter) och
@@ -83,7 +127,7 @@ playwright install chromium
    eller båda i ett: `python cli.py all --limit 20`
 5. `uvicorn api:app --reload`  ->  http://127.0.0.1:8000/  och  /docs
 
-Kommandon: `contact`, `check-feeds`, `discover`, `fetch`, `parse`, `run`, `archive`, `all`, `status`, `probe`, `backfill`, `snowball`, `wayback`, `sites`, `add-site`, `add-sites`.
+Kommandon: `contact`, `admin-password`, `delete`, `export-site`, `check-feeds`, `discover`, `fetch`, `parse`, `run`, `archive`, `all`, `status`, `probe`, `backfill`, `snowball`, `wayback`, `sites`, `add-site`, `add-sites`.
 Alla kan begränsas: `--site dn svt`. `archive` har även `--front-only` och `--no-front`.
 
 ## Fullständig arkivering (WARC)

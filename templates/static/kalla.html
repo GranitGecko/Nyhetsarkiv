@@ -1,0 +1,22 @@
+{% extends "static/base.html" %}
+{% block title %}{{ e.name }}{% endblock %}
+{% block content %}
+<h2>{{ e.name }}</h2>
+<p class="liten">{{ e.type }} | <a href="{{ e.home }}">{{ e.home }}</a> |
+  {% if e.in_archive %}{{ e.stats.get('articles', 0) }} artiklar i arkivet{% else %}ännu inte tillagd i arkivet{% endif %}</p>
+
+{% include "_profile.html" %}
+
+{% if with_articles and recent %}
+  <h3>Senaste artiklarna (rubrik och länk till originalet)</h3>
+  <table class="lista">
+    <tr><th>Datum</th><th>Typ</th><th>Rubrik</th></tr>
+    {% for a in recent %}
+    <tr class="{{ 'udda' if loop.index is odd }}"><td>{{ (a.published or '')[:10] }}</td><td>{{ a.article_type or '' }}</td>
+      <td>{% if a.link %}<a href="{{ a.link }}" rel="nofollow noopener">{{ a.title or a.url }}</a>{% else %}{{ a.title or a.url }}{% endif %}</td></tr>
+    {% endfor %}
+  </table>
+  <p><a href="../artiklar/{{ slugs[e.key] }}/1.html">&raquo; Alla rubriker från {{ e.name }}</a></p>
+{% endif %}
+<p><a href="../kallor.html">&laquo; Alla källor</a> | <a href="../index.html">Start</a></p>
+{% endblock %}
